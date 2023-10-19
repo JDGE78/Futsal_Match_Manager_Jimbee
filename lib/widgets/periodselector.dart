@@ -40,7 +40,7 @@ class _PeriodSelectorState extends State<PeriodSelector> {
             fit: BoxFit.scaleDown,
             child: Text(
               '$_matchPeriod',
-              style: const TextStyle(fontSize: 24, color: Colors.white),
+              style: const TextStyle(fontSize: 20, color: Colors.white),
             ),
           )),
           SizedBox(

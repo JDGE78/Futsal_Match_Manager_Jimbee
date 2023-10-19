@@ -51,10 +51,10 @@ class _HandleScoreState extends State<HandleScore> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width / 24,
+            width: MediaQuery.of(context).size.width / 26,
             height: MediaQuery.of(context).size.height / 10,
             child: FittedBox(
-              fit: BoxFit.scaleDown,
+              fit: BoxFit.fill,
               child: TextButton(
                 onPressed: () {
                   _decrease(posVar);
@@ -131,9 +131,9 @@ class _HandleScoreState extends State<HandleScore> {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       for (var i = 1; i <= 5; i++)
         Container(
-          margin: const EdgeInsets.all(4),
-          width: 20,
-          height: 20,
+          margin: const EdgeInsets.fromLTRB(8,0,0,0),
+          width: 18,
+          height: 18,
           decoration: BoxDecoration(
             color: foul == 5
                 ? Colors.red
@@ -172,6 +172,9 @@ class _HandleScoreState extends State<HandleScore> {
                             )), //PANTALLA DEL PREVIO
                   );*/
                   _increment("localYellowsCards");
+                },
+                onLongPress: () {
+                  _decrease("localYellowsCards");
                 },
                 child: Image.asset('assets/images/tarjetaamarilla.png',
                     height: 50),
@@ -229,6 +232,9 @@ class _HandleScoreState extends State<HandleScore> {
                   );*/
                   _increment("localRedCards");
                 },
+                onLongPress: () {
+                  _decrease("localRedCards");
+                },
                 child: Image.asset('assets/images/tarjetaroja.png', height: 50),
               ),
             ),
@@ -264,6 +270,9 @@ class _HandleScoreState extends State<HandleScore> {
                             )), //PANTALLA DEL PREVIO
                   );*/
                   _increment("guestYellowsCards");
+                },
+                onLongPress: () {
+                  _decrease("guestYellowsCards");
                 },
                 child: Image.asset('assets/images/tarjetaamarilla.png',
                     height: 50),
@@ -320,6 +329,9 @@ class _HandleScoreState extends State<HandleScore> {
                             )), //PANTALLA DEL PREVIO
                   );*/
                   _increment("guestRedCards");
+                },
+                onLongPress: () {
+                  _decrease("guestRedCards");
                 },
                 child: Image.asset('assets/images/tarjetaroja.png', height: 50),
               ),
@@ -399,8 +411,32 @@ class _HandleScoreState extends State<HandleScore> {
             MyApp.guestFouls--;
           }
           break;
+//TARJETAS LOCAL
+        case "localYellowsCards":
+          if (MyApp.localYellowsCards > 0) {
+            MyApp.localYellowsCards--;
+          }
+          break;
+        case "localRedCards":
+          if (MyApp.localRedCards > 0) {
+            MyApp.localRedCards--;
+          }
+          break;
+//TARJETAS GUEST
+        case "guestYellowsCards":
+          if (MyApp.guestYellowsCards > 0) {
+            MyApp.guestYellowsCards--;
+          }
+          break;
+        case "guestRedCards":
+          if (MyApp.guestRedCards > 0) {
+            MyApp.guestRedCards--;
+          }
+          break;
+
       }
     });
+    updateData();
   }
 
   void updateData() {

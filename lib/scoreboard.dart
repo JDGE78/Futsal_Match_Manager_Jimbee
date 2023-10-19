@@ -162,7 +162,7 @@ class _ScoreBoardState extends State<ScoreBoard> {
               textAlign: TextAlign.end,
               style: TextStyle(
                 decoration: TextDecoration.none,
-                fontSize: 20,
+                fontSize: 12,
                 color: Colors.green,
               ),
             ),
@@ -172,18 +172,18 @@ class _ScoreBoardState extends State<ScoreBoard> {
           child: FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
-              //'$score',
               '$period',
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style: TextStyle(
                 decoration: TextDecoration.none,
                 fontFamily: "LED",
                 fontStyle: FontStyle.normal,
-                fontSize: 60,
+                fontSize: MediaQuery.of(context).size.width * 0.03, // Ajustar el tamaño en función del ancho de la pantalla
                 color: Colors.greenAccent,
               ),
             ),
           ),
+
         ),
       ]),
     );
