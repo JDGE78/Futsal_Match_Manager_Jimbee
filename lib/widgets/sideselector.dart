@@ -19,7 +19,10 @@ class _SideSelectorState extends State<SideSelector> {
     return Row(children: [
       Column(
         children: [
-          FittedBox(child: Image.asset('assets/images/local.png', height: 150)),
+          Flexible(
+            flex: 1,
+              fit: FlexFit.tight,
+              child: FittedBox(child: Image.asset('assets/images/local.png', height: 150))),
           const SizedBox(
             child: FittedBox(
               fit: BoxFit.scaleDown,
@@ -43,7 +46,7 @@ class _SideSelectorState extends State<SideSelector> {
         ],
       ),
       Padding(
-        padding: const EdgeInsets.all(64.0),
+        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.1), // 10% del ancho de la pantalla
         child: Dismissible(
           key: const Key('side'),
           onDismissed: (direction) {
@@ -64,24 +67,29 @@ class _SideSelectorState extends State<SideSelector> {
             child: SizedBox(
               //color: Colors.white,
               child: Row(
-                mainAxisSize: MainAxisSize.max, // Hace que el Row tome todo el espacio vertical disponible
+                mainAxisSize: MainAxisSize.min, // Ajusta a "min" para evitar desbordamientos
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.arrow_left_rounded,
-                      size: 50, color: Colors.white),
-                  Image.asset('assets/images/logoteam.png',
-                      width: 80, height: 80),
-                  const Icon(Icons.arrow_right_rounded,
-                      size: 50, color: Colors.white),
+                  const Icon(Icons.arrow_left_rounded, size: 50, color: Colors.white),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width * 0.1, // 30% del ancho de la pantalla
+                    height: MediaQuery.of(context).size.width * 0.1, // 30% del ancho de la pantalla
+                    child: Image.asset('assets/images/logoteam.png'),
+                  ),
+                  const Icon(Icons.arrow_right_rounded, size: 50, color: Colors.white),
                 ],
-              ),
+              )
+
             ),
           ),
         ),
       ),
-      Column(
+      Column( //poner FLEXIBLE AQUI
         children: [
-          Image.asset('assets/images/visitante.png', height: 150),
+          Flexible(
+              flex: 1,
+              fit: FlexFit.tight,
+              child: Image.asset('assets/images/visitante.png', height: 150)),
           const FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(

@@ -142,87 +142,95 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          child: Column(
-            children: <Widget>[
-              AppBar(
-                shadowColor: Colors.red,
-                shape: const RoundedRectangleBorder(
-                  borderRadius:
-                      BorderRadius.vertical(bottom: Radius.circular(50)),
-                ),
-                toolbarHeight: MediaQuery.of(context).size.height * 0.04,
-                backgroundColor: Colors.black26,
-                centerTitle: true,
-                title: const Text(
-                  "Futsal Match Manager",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+          child: Flexible(
+            flex: 1,
+            fit: FlexFit.tight,
+            child: Column(
+              children: <Widget>[
+                AppBar(
+                  shadowColor: Colors.red,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.vertical(bottom: Radius.circular(50)),
+                  ),
+                  toolbarHeight: MediaQuery.of(context).size.height * 0.04,
+                  backgroundColor: Colors.black26,
+                  centerTitle: true,
+                  title: const Text(
+                    "Futsal Match Manager",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ),
 
-              Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Row(
-                    children: [
-                      Image.asset(
-                        'assets/images/logoteam.png',
-                        height: 70,
-                        width: 70,
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width / 1.5,
-                            child: const FittedBox(
-                              fit: BoxFit.scaleDown,
-                              child: Text(
-                                'Jimbee Cartagena',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 50,
-                                  shadows: [
-                                    Shadow(
-                                      blurRadius: 20.0,
-                                      color: Colors.black,
-                                      offset: Offset(5.0, 5.0),
-                                    ),
-                                  ],
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Row(
+                      children: [
+                        Image.asset(
+                          'assets/images/logoteam.png',
+                          height: 70,
+                          width: 70,
+                        ),
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width / 1.5,
+                              child: const FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  'Jimbee Cartagena',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 50,
+                                    shadows: [
+                                      Shadow(
+                                        blurRadius: 20.0,
+                                        color: Colors.black,
+                                        offset: Offset(5.0, 5.0),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ],
-              ),
-
-              //CENTRO PARA LOS WIDGETS DE STADISTICS
-              Container(
-                width: MediaQuery.of(context).size.width * 0.9,
-                height: MediaQuery.of(context).size.height * 0.745,
-                alignment: Alignment.center,
-                child: const Expanded(
-                  child: Row(children: [
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          //DayCalendar(),
-                        ],
-                      ),
-                    ]),
-                  ]),
+                          ],
+                        )
+                      ],
+                    ),
+                  ],
                 ),
-              ),
 
-              //PARTE BAJA
-            ],
+                //CENTRO PARA LOS WIDGETS DE STADISTICS
+                Flexible(
+                  flex: 1,
+                  fit: FlexFit.tight,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    alignment: Alignment.center,
+                    child: const Expanded(
+                      child: Row(children: [
+                        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              //DayCalendar(),
+                            ],
+                          ),
+                        ]),
+                      ]),
+                    ),
+                  ),
+                ),
+
+                //PARTE BAJA
+              ],
+            ),
           ),
         ),
       ),

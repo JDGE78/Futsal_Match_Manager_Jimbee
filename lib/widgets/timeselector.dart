@@ -45,7 +45,7 @@ class _TimeSelectorState extends State<TimeSelector> {
           const SizedBox(width: 8),
           Text(
             '${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}',
-            style: const TextStyle(fontSize: 24, color: Colors.white),
+            style: const TextStyle(fontSize: 20, color: Colors.white),
           ),
           const SizedBox(width: 8),
           FittedBox(

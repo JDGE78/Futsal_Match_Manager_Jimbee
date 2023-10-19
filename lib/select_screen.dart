@@ -78,271 +78,285 @@ class _SelectScreenState extends State<SelectScreen> {
             ],
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  width: MediaQuery.of(context).size.width / 2,
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      MyApp.matchTime,
-                      style: const TextStyle(
-                        decoration: TextDecoration.none,
-                        color: Colors.white,
-                        fontSize: 30,
-                        shadows: [
-                          Shadow(
-                            blurRadius: 20.0,
-                            color: Colors.black,
-                            offset: Offset(5.0, 5.0),
+        child: Flexible(
+          flex: 1,
+          fit: FlexFit.tight,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 2,
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          MyApp.matchTime,
+                          style: const TextStyle(
+                            decoration: TextDecoration.none,
+                            color: Colors.white,
+                            fontSize: 24,
+                            shadows: [
+                              Shadow(
+                                blurRadius: 20.0,
+                                color: Colors.black,
+                                offset: Offset(5.0, 5.0),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ), // FECHA
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(right: 4.0),
-                  child: SizedBox(
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text(
-                        'Rival',
-                        style: TextStyle(
-                          decoration: TextDecoration.none,
-                          color: Colors.white,
-                          fontSize: 24,
-                          shadows: [
-                            Shadow(
-                              blurRadius: 20.0,
-                              color: Colors.black,
-                              offset: Offset(5.0, 5.0),
-                            ),
-                          ],
+              ), // FECHA
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(right: 4.0),
+                    child: SizedBox(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          'Rival',
+                          style: TextStyle(
+                            decoration: TextDecoration.none,
+                            color: Colors.white,
+                            fontSize: 18,
+                            shadows: [
+                              Shadow(
+                                blurRadius: 20.0,
+                                color: Colors.black,
+                                offset: Offset(5.0, 5.0),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.width / 30,
-                  width: MediaQuery.of(context).size.width / 3,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: TextField(
-                    textCapitalization: TextCapitalization.characters,
-                    focusNode: rivalFocusNode,
-                    controller: _rivalController,
-                    autofocus: true,
-                    onChanged: (value) {
-                      setState(() {
-                        EnableDismissible();
-                        MyApp.rival = value;
-                      });
-                    },
-                     // Bloquea el texto en mayúsculas
-                    maxLines: 1,
-                    textAlign: TextAlign.center,
-                    decoration: const InputDecoration(
-                      hintText: 'Nombre del equipo',
-                      hintStyle: TextStyle(color: Colors.white, fontSize: 16),
-                      border: InputBorder.none,
-                    ),
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              ],
-            ), //NOMBRE DEL RIVAL
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  child: FittedBox(
-                    fit: BoxFit.scaleDown,
-                    child: Text(
-                      'Lugar del partido  ',
-                      style: TextStyle(
-                        decoration: TextDecoration.none,
-                        color: Colors.white,
-                        fontSize: 20,
-                        shadows: [
-                          Shadow(
-                            blurRadius: 20.0,
-                            color: Colors.black,
-                            offset: Offset(5.0, 5.0),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  height: MediaQuery.of(context).size.width / 30,
-                  width: MediaQuery.of(context).size.width / 3,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.white),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: TextField(
-                    textCapitalization: TextCapitalization.characters,
-                    focusNode: placeFocusNode,
-                    controller: _placeController,
-                    onChanged: (value) {
-                      setState(() {
-                        EnableDismissible();
-                        MyApp.matchPlace = value;
-                        if (!placeFocusNode.hasFocus) {
-                          // Ocultar el teclado si no tiene el foco
-                          FocusScope.of(context).unfocus();
-                        }
-                      });
-                    },
-                    maxLines: 1,
-                    textAlign: TextAlign.center,
-                    decoration: const InputDecoration(
-                      hintText: 'Ingrese el lugar',
-                      hintStyle: TextStyle(color: Colors.white, fontSize: 16),
-                      border: InputBorder.none,
-                    ),
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 16.0),
-                  child: SizedBox(
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text(
-                        'Hora',
-                        style: TextStyle(
-                          decoration: TextDecoration.none,
-                          color: Colors.white,
-                          fontSize: 20,
-                          shadows: [
-                            Shadow(
-                              blurRadius: 20.0,
-                              color: Colors.black,
-                              offset: Offset(5.0, 5.0),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Container(
+                  Container(
                     height: MediaQuery.of(context).size.width / 30,
-                    width: MediaQuery.of(context).size.width / 6,
+                    width: MediaQuery.of(context).size.width / 3,
                     decoration: BoxDecoration(
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(30),
                     ),
-                    child: GestureDetector(
-                      onTap: () async {
-                        _time = (await showTimePicker(
-                          context: context,
-                          initialTime: _time,
-                        ))!;
-
-                        _timeController.text = _time.format(context);
-                        MyApp.matchHour = _timeController.text;
-                        EnableDismissible();
-                        if (!timeFocusNode.hasFocus) {
-                          // Ocultar el teclado si no tiene el foco
-                          FocusScope.of(context).unfocus();
-                        }
+                    child: TextField(
+                      textCapitalization: TextCapitalization.characters,
+                      focusNode: rivalFocusNode,
+                      controller: _rivalController,
+                      autofocus: true,
+                      onChanged: (value) {
+                        setState(() {
+                          EnableDismissible();
+                          MyApp.rival = value;
+                        });
                       },
-                      child: AbsorbPointer(
-                        child: TextField(
-                          focusNode: timeFocusNode,
-                          enabled: false,
-                          textAlign: TextAlign.center,
-                          controller: _timeController,
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                          ),
-                          style: const TextStyle(
-                              color: Colors.white, fontSize: 24),
+                       // Bloquea el texto en mayúsculas
+                      maxLines: 1,
+                      textAlign: TextAlign.center,
+                      decoration: const InputDecoration(
+                        hintText: 'Nombre del equipo',
+                        hintStyle: TextStyle(color: Colors.white, fontSize: 16),
+                        border: InputBorder.none,
+                      ),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ],
+              ), //NOMBRE DEL RIVAL
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        'Lugar del partido  ',
+                        style: TextStyle(
+                          decoration: TextDecoration.none,
+                          color: Colors.white,
+                          fontSize: 18,
+                          shadows: [
+                            Shadow(
+                              blurRadius: 20.0,
+                              color: Colors.black,
+                              offset: Offset(5.0, 5.0),
+                            ),
+                          ],
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 16),
-                  child: SizedBox(
-                    child: Text(
-                      'Númerio de periodos',
-                      style: TextStyle(
-                        decoration: TextDecoration.none,
+                  Container(
+                    height: MediaQuery.of(context).size.width / 30,
+                    width: MediaQuery.of(context).size.width / 3,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: TextField(
+                      textCapitalization: TextCapitalization.characters,
+                      focusNode: placeFocusNode,
+                      controller: _placeController,
+                      onChanged: (value) {
+                        setState(() {
+                          EnableDismissible();
+                          MyApp.matchPlace = value;
+                          if (!placeFocusNode.hasFocus) {
+                            // Ocultar el teclado si no tiene el foco
+                            FocusScope.of(context).unfocus();
+                          }
+                        });
+                      },
+                      maxLines: 1,
+                      textAlign: TextAlign.center,
+                      decoration: const InputDecoration(
+                        hintText: 'Ingrese el lugar',
+                        hintStyle: TextStyle(color: Colors.white, fontSize: 16),
+                        border: InputBorder.none,
+                      ),
+                      style: const TextStyle(
                         color: Colors.white,
-                        fontSize: 20,
-                        shadows: [
-                          Shadow(
-                            blurRadius: 20.0,
-                            color: Colors.black,
-                            offset: Offset(5.0, 5.0),
-                          ),
-                        ],
+                        fontSize: 18,
                       ),
                     ),
                   ),
-                ),
-                PeriodSelector(periods: 2),
-                const Padding(
-                  padding: EdgeInsets.only(left: 6),
-                  child: SizedBox(
-                    child: Text(
-                      'Duración del periodo',
-                      style: TextStyle(
-                        decoration: TextDecoration.none,
-                        color: Colors.white,
-                        fontSize: 24,
-                        shadows: [
-                          Shadow(
-                            blurRadius: 20.0,
-                            color: Colors.black,
-                            offset: Offset(5.0, 5.0),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 16.0),
+                    child: SizedBox(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        child: Text(
+                          'Hora',
+                          style: TextStyle(
+                            decoration: TextDecoration.none,
+                            color: Colors.white,
+                            fontSize: 18,
+                            shadows: [
+                              Shadow(
+                                blurRadius: 20.0,
+                                color: Colors.black,
+                                offset: Offset(5.0, 5.0),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Container(
+                      height: MediaQuery.of(context).size.width / 30,
+                      width: MediaQuery.of(context).size.width / 6,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: GestureDetector(
+                        onTap: () async {
+                          _time = (await showTimePicker(
+                            context: context,
+                            initialTime: _time,
+                          ))!;
+
+                          _timeController.text = _time.format(context);
+                          MyApp.matchHour = _timeController.text;
+                          EnableDismissible();
+                          if (!timeFocusNode.hasFocus) {
+                            // Ocultar el teclado si no tiene el foco
+                            FocusScope.of(context).unfocus();
+                          }
+                        },
+                        child: AbsorbPointer(
+                          child: TextField(
+                            focusNode: timeFocusNode,
+                            enabled: false,
+                            textAlign: TextAlign.center,
+                            controller: _timeController,
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                            ),
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 18),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 16),
+                    child: SizedBox(
+                      child: Text(
+                        'Númerio de periodos',
+                        style: TextStyle(
+                          decoration: TextDecoration.none,
+                          color: Colors.white,
+                          fontSize: 18,
+                          shadows: [
+                            Shadow(
+                              blurRadius: 20.0,
+                              color: Colors.black,
+                              offset: Offset(5.0, 5.0),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  const PeriodSelector(periods: 2),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 6),
+                    child: SizedBox(
+
+                      child: Text(
+                        'Duración del periodo',
+                        style: TextStyle(
+                          decoration: TextDecoration.none,
+                          color: Colors.white,
+                          fontSize: 18,
+                          shadows: [
+                            Shadow(
+                              blurRadius: 20.0,
+                              color: Colors.black,
+                              offset: Offset(5.0, 5.0),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  TimeSelector(initialSeconds: (MyApp.matchMinutes * 60)),
+                ],
+              ),
+              Flexible(
+                flex: 1,
+                fit: FlexFit.tight,
+                child: SizedBox(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      EnableDismissible() ? SideSelector() : Container(),
+                    ],
+                  ),
                 ),
-                TimeSelector(initialSeconds: (MyApp.matchMinutes * 60)),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                EnableDismissible() ? SideSelector() : Container(),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
       ),
     );
