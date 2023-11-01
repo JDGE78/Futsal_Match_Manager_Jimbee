@@ -25,7 +25,7 @@ class _TimeSelectorState extends State<TimeSelector> {
     int remainingSeconds = _seconds % 60;
 
     return Container(
-      height: MediaQuery.of(context).size.width / 30,
+      height: MediaQuery.of(context).size.height / 18,
       width: MediaQuery.of(context).size.width / 6,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.white),
@@ -43,9 +43,13 @@ class _TimeSelectorState extends State<TimeSelector> {
             ),
           ),
           const SizedBox(width: 8),
-          Text(
-            '${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}',
-            style: const TextStyle(fontSize: 20, color: Colors.white),
+
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              '${minutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}',
+              style: const TextStyle(fontSize: 20, color: Colors.white),
+            ),
           ),
           const SizedBox(width: 8),
           FittedBox(

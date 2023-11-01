@@ -131,7 +131,7 @@ class _HandleScoreState extends State<HandleScore> {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       for (var i = 1; i <= 5; i++)
         Container(
-          margin: const EdgeInsets.fromLTRB(8,0,0,0),
+          margin: const EdgeInsets.fromLTRB(4,0,0,0),
           width: 18,
           height: 18,
           decoration: BoxDecoration(

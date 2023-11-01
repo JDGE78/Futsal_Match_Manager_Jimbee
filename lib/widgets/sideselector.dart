@@ -19,10 +19,7 @@ class _SideSelectorState extends State<SideSelector> {
     return Row(children: [
       Column(
         children: [
-          Flexible(
-            flex: 1,
-              fit: FlexFit.tight,
-              child: FittedBox(child: Image.asset('assets/images/local.png', height: 150))),
+          FittedBox(child: Image.asset('assets/images/local.png', height: 150)),
           const SizedBox(
             child: FittedBox(
               fit: BoxFit.scaleDown,
@@ -86,10 +83,7 @@ class _SideSelectorState extends State<SideSelector> {
       ),
       Column( //poner FLEXIBLE AQUI
         children: [
-          Flexible(
-              flex: 1,
-              fit: FlexFit.tight,
-              child: Image.asset('assets/images/visitante.png', height: 150)),
+          SizedBox(child: Image.asset('assets/images/visitante.png', height: 150)),
           const FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
@@ -109,7 +103,8 @@ class _SideSelectorState extends State<SideSelector> {
             ),
           ),
         ],
-      ),
+      )
+     
     ]);
   }
 

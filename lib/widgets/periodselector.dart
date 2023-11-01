@@ -18,7 +18,7 @@ class _PeriodSelectorState extends State<PeriodSelector> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.width / 30,
+      height: MediaQuery.of(context).size.height / 18, //TAMAÑO ANCHO EN PRUEBAS
       width: MediaQuery.of(context).size.width / 6,
       decoration: BoxDecoration(
         border: Border.all(color: Colors.white),

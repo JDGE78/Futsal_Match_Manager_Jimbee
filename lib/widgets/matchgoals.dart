@@ -57,13 +57,13 @@ class _MatchGoalsState extends State<MatchGoals> {
             ),
             SizedBox(height: MediaQuery.of(context).size.height / 9),
             SizedBox(
-              height: MediaQuery.of(context).size.height / 15,
+              height: MediaQuery.of(context).size.height / 12,
               child: TextButton(
                 onPressed: () {
                   _decreaseLocalGoal();
                 },
                 child: const FittedBox(
-                  fit: BoxFit.scaleDown,
+                  fit: BoxFit.fitHeight,
                   child: Text(
                     "-",
                     style: TextStyle(

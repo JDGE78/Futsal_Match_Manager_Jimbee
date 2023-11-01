@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:futsal_match_manager/players.dart';
 import 'package:futsal_match_manager/select_screen.dart';
+import 'package:flutter/services.dart'; // Importa el paquete SystemChrome(pantalla horizontal)
 
 void main() {
-  runApp(const MyApp());
+  // Forzar la orientación en modo horizontal
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft])
+      .then((_) {
+    runApp(const MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -40,7 +46,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
       title: 'Futsal Match Manager',
       theme: ThemeData(
           primarySwatch: Colors.red, scaffoldBackgroundColor: Colors.black),
@@ -66,6 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.red,

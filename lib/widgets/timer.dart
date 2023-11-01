@@ -58,30 +58,50 @@ class _MatchTimerButtonState extends State<MatchTimerButton> {
   }
 
   Widget score(bool _isRunning) {
-    //Marcador
+    // Variable para rastrear si la acción está en progreso
+    bool _actionInProgress = false;
+
     return SizedBox(
       height: MediaQuery.of(context).size.height / 4,
       child: TextButton(
-          child: FittedBox(
-            fit: BoxFit.contain,
-            child: Text(
-              timeNormalized(_secondsLeft),
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontFamily: "Led",
-                fontStyle: FontStyle.normal,
-                fontSize: 150,
-                color: Colors.redAccent,
-              ),
+        child: FittedBox(
+          fit: BoxFit.contain,
+          child: Text(
+            timeNormalized(_secondsLeft),
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontFamily: "Led",
+              fontStyle: FontStyle.normal,
+              fontSize: 150,
+              color: Colors.redAccent,
             ),
           ),
-          onPressed: () {
-            if (_isRunning) {
-              stopTimer();
-            } else {
-              startTimer();
-            }
-          }),
+        ),
+        onPressed: () {
+          if (_actionInProgress) {
+            return; // Evitar que la acción se ejecute mientras está en progreso
+          }
+
+          setState(() {
+            // Iniciar la acción
+            _actionInProgress = true;
+          });
+
+          // Realiza la acción (por ejemplo, inicia o detiene un temporizador)
+          if (_isRunning) {
+            // Detener la acción
+            stopTimer();
+          } else {
+            // Iniciar la acción
+            startTimer();
+          }
+
+          setState(() {
+            // La acción ha terminado, habilitar el botón nuevamente
+            _actionInProgress = false;
+          });
+        },
+      ),
     );
   }
 
